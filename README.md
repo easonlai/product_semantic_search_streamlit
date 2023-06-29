@@ -5,3 +5,5 @@ In past code repo, ["Semantic Search by Azure OpenAI Embedding model (text-embed
 This enhanced/completed version used [Streamlit](https://streamlit.io/) to build a web user experience to semantic search and display the most relevant items.
 
 ![alt text](https://github.com/easonlai/product_semantic_search_streamlit/blob/main/git-images/git-image-1.png)
+
+Enjoy!
