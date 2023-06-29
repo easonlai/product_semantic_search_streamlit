@@ -6,4 +6,9 @@ This enhanced/completed version used [Streamlit](https://streamlit.io/) to build
 
 ![alt text](https://github.com/easonlai/product_semantic_search_streamlit/blob/main/git-images/git-image-1.png)
 
+To run this Streamlit web app
+```
+streamlit run app.py
+```
+
 Enjoy!
