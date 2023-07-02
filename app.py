@@ -12,15 +12,15 @@ openai.api_version = "2022-12-01"
 openai.api_key = "PLEASE_ENTER_YOUR_OWNED_AOAI_SERVICE_KEY"
 engine = "PLEASE_ENTER_YOUR_OWNED_AOAI_EMBEDDING_MODEL_NAME"
 
+# Reload the item CSV file with the word embedding result.
+df = pd.read_csv('./data/grocery_store_items_word_embeddings.csv')
+df['embedding'] = df['embedding'].apply(eval).apply(np.array) # type: ignore
+
 # Set web page header and title.
 st.set_page_config(
     page_title="Product Semantic Search"
 )
 st.title("Product Semantic Search")
-
-# Reload the item CSV file with the word embedding result.
-df = pd.read_csv('./data/grocery_store_items_word_embeddings.csv')
-df['embedding'] = df['embedding'].apply(eval).apply(np.array) # type: ignore
 
 #  Create a text input box for the user to enter the search terms.
 user_input = st.text_input("Please let me know what you are looking for: ")
@@ -30,6 +30,7 @@ N_cards_per_row = 3
 
 # If the user has entered the search terms, then perform the semantic search.
 if user_input:
+    # Get the word embedding of the user input.
     search_terms_vector = get_embedding(user_input, engine=engine)
     # Calculate the cosine similarity between each item name and the user input.
     df["similarity"] = df['embedding'].apply(lambda x: cosine_similarity(x, search_terms_vector))
